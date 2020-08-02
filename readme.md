@@ -21,9 +21,11 @@
 - Added a `events` prop that takes an array of the events you want to register instead of registering all library events.
 
 ```
-<carousel :events="['initialized', 'changed']" @initialized="intial" @changed="changed">
-//
-</carousel>
+<template>
+    <carousel :events="['initialized', 'changed']" @initialized="intial" @changed="changed">
+    //
+    </carousel>
+<template/>
 
 <script>
 import carousel from 'xx-vue-owl-carousel'
