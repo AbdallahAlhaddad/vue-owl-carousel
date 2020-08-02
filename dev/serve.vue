@@ -1,17 +1,17 @@
 <script>
-import Vue from 'vue'
-import VueOwlCarousel from '@/xx-vue-owl-carousel.vue'
+import Vue from "vue";
+import VueOwlCarousel from "@/xx-vue-owl-carousel.vue";
 
 export default Vue.extend({
-  name: 'ServeDev',
+  name: "ServeDev",
   components: {
-    VueOwlCarousel,
+    XxVueOwlCarousel,
   },
-})
+});
 </script>
 
 <template>
   <div id="app">
-    <vue-owl-carousel />
+    <xx-vue-owl-carousel />
   </div>
 </template>

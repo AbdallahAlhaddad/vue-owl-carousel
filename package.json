@@ -1,11 +1,11 @@
 {
   "name": "xx-vue-owl-carousel",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "vue wrapper for owl carousel 2.",
-  "main": "dist/vue-owl-carousel2.ssr.js",
-  "browser": "dist/vue-owl-carousel2.esm.js",
-  "module": "dist/vue-owl-carousel2.esm.js",
-  "unpkg": "dist/vue-owl-carousel2.min.js",
+  "main": "dist/xx-vue-owl-carousel.ssr.js",
+  "browser": "dist/xx-vue-owl-carousel.esm.js",
+  "module": "dist/xx-vue-owl-carousel.esm.js",
+  "unpkg": "dist/xx-vue-owl-carousel.min.js",
   "author": {
     "name": "Abdallah Mamdouh"
   },

@@ -14736,10 +14736,10 @@ const __vue_component__ = /*#__PURE__*/normalizeComponent({
 
 // Import vue component
 
-const install = function installVueOwlCarousel(Vue) {
+const install = function installXxVueOwlCarousel(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component('VueOwlCarousel', __vue_component__);
+  Vue.component('XxVueOwlCarousel', __vue_component__);
 }; // Create module definition for Vue.use()
 // to be registered via Vue.use() as well as Vue.component()
 

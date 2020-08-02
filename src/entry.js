@@ -2,10 +2,10 @@
 import component from '@/xx-vue-owl-carousel.vue'
 
 // install function executed by Vue.use()
-const install = function installVueOwlCarousel(Vue) {
+const install = function installXxVueOwlCarousel(Vue) {
   if (install.installed) return
   install.installed = true
-  Vue.component('VueOwlCarousel', component)
+  Vue.component('XxVueOwlCarousel', component)
 }
 
 // Create module definition for Vue.use()
