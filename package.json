@@ -1,6 +1,6 @@
 {
   "name": "xx-vue-owl-carousel",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "vue wrapper for owl carousel 2.",
   "main": "dist/vue-owl-carousel2.ssr.js",
   "browser": "dist/vue-owl-carousel2.esm.js",
