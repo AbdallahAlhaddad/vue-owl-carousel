@@ -14228,7 +14228,7 @@ styleInject(css_248z$1);/**
 })(window.Zepto || window.jQuery);//
 var $ = window.jQuery;
 var script = {
-  name: 'VOwlCarousel',
+  name: "VOwlCarousel",
   props: {
     slideValue: {
       type: Number,
@@ -14311,12 +14311,12 @@ var script = {
     navText: {
       type: Array,
       default: function _default() {
-        return ['prev', 'next'];
+        return ["prev", "next"];
       }
     },
     navElement: {
       type: String,
-      default: 'div'
+      default: "div"
     },
     slideBy: {
       type: [Number, String],
@@ -14324,7 +14324,7 @@ var script = {
     },
     slideTransition: {
       type: String,
-      default: ''
+      default: ""
     },
     dots: {
       type: Boolean,
@@ -14394,7 +14394,7 @@ var script = {
     },
     responsiveBaseElement: {
       type: String,
-      default: 'window'
+      default: "window"
     },
     video: {
       type: Boolean,
@@ -14418,7 +14418,7 @@ var script = {
     },
     fallbackEasing: {
       type: String,
-      default: 'swing'
+      default: "swing"
     },
     info: {
       type: Function,
@@ -14426,11 +14426,11 @@ var script = {
     },
     itemElement: {
       type: String,
-      default: 'div'
+      default: "div"
     },
     stageElement: {
       type: String,
-      default: 'div'
+      default: "div"
     },
     navContainer: {
       type: [String, Boolean],
@@ -14447,16 +14447,16 @@ var script = {
   },
   watch: {
     rtl: function rtl(newValue, oldValue) {
-      this.owl.trigger('destroy.owl.carousel');
+      this.owl.trigger("destroy.owl.carousel");
       this.instantiate();
     },
     items: function items(newValue, oldValue) {
-      this.owl.trigger('destroy.owl.carousel');
+      this.owl.trigger("destroy.owl.carousel");
       this.instantiate();
+    },
+    slideValue: function slideValue(newValue, oldValue) {
+      if (newValue < oldValue) this.goPrev();else this.goNext();
     }
-  },
-  slideValue: function slideValue(newValue, oldValue) {
-    if (newValue < oldValue) this.goPrev();else this.goNext();
   },
   data: function data() {
     return {
@@ -14464,7 +14464,7 @@ var script = {
       showPrev: false,
       showNext: true,
       cachedCurrentPos: null,
-      elementHandle: 'carousel_' + this.generateUniqueId() // prevHandler: 'carousel_prev_' + this.generateUniqueId (),
+      elementHandle: "carousel_" + this.generateUniqueId() // prevHandler: 'carousel_prev_' + this.generateUniqueId (),
       // nextHandler: 'carousel_next_' + this.generateUniqueId(),
 
     };
@@ -14485,13 +14485,13 @@ var script = {
        *!  Notice that initialize.owl.carousel and initialized.owl.carousel
        *!  events must be attached before Owl Carousel initialization. This is required only for those two.
        **/
-      $('#' + this.elementHandle).on('initialize.owl.carousel', function (event) {
-        _this.$emit('initialize', event);
+      $("#" + this.elementHandle).on("initialize.owl.carousel", function (event) {
+        _this.$emit("initialize", event);
       });
-      $('#' + this.elementHandle).on('initialized.owl.carousel', function (event) {
-        _this.$emit('initialized', event);
+      $("#" + this.elementHandle).on("initialized.owl.carousel", function (event) {
+        _this.$emit("initialized", event);
       });
-      this.owl = $('#' + this.elementHandle).owlCarousel({
+      this.owl = $("#" + this.elementHandle).owlCarousel({
         // ! see if there are a cached postion.. if not use the passed prop:
         startPosition: this.cachedCurrentPos ? this.cachedCurrentPos : this.startPosition,
         items: this.items,
@@ -14545,8 +14545,8 @@ var script = {
         checkVisible: this.checkVisible
       }); // remove 'initialize','initialized' event listeners
 
-      $('#' + this.elementHandle).off('initialize.owl.carousel');
-      $('#' + this.elementHandle).off('initialized.owl.carousel');
+      $("#" + this.elementHandle).off("initialize.owl.carousel");
+      $("#" + this.elementHandle).off("initialized.owl.carousel");
     },
     generateUniqueId: function generateUniqueId() {
       return Math.random().toString(36).substring(2, 15);
@@ -14573,7 +14573,7 @@ var script = {
       var _this3 = this;
 
       if (!this.loop) {
-        this.owl.on('changed.owl.carousel', function (event) {
+        this.owl.on("changed.owl.carousel", function (event) {
           _this3.cachedCurrentPos = event.item.index; // start
 
           if (event.item.index === 0) {
@@ -14594,10 +14594,10 @@ var script = {
       }
     },
     goNext: function goNext() {
-      this.owl.trigger('next.owl.carousel');
+      this.owl.trigger("next.owl.carousel");
     },
     goPrev: function goPrev() {
-      this.owl.trigger('prev.owl.carousel');
+      this.owl.trigger("prev.owl.carousel");
     }
   }
 };function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
@@ -14696,7 +14696,7 @@ var __vue_inject_styles__ = undefined;
 var __vue_scope_id__ = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-252e69d5";
+var __vue_module_identifier__ = "data-v-7214428e";
 /* functional template */
 
 var __vue_is_functional_template__ = false;

@@ -14242,7 +14242,7 @@ styleInject(css_248z$1);
 //
 let $ = window.jQuery;
 var script = {
-  name: 'VOwlCarousel',
+  name: "VOwlCarousel",
   props: {
     slideValue: {
       type: Number,
@@ -14322,11 +14322,11 @@ var script = {
     },
     navText: {
       type: Array,
-      default: () => ['prev', 'next']
+      default: () => ["prev", "next"]
     },
     navElement: {
       type: String,
-      default: 'div'
+      default: "div"
     },
     slideBy: {
       type: [Number, String],
@@ -14334,7 +14334,7 @@ var script = {
     },
     slideTransition: {
       type: String,
-      default: ''
+      default: ""
     },
     dots: {
       type: Boolean,
@@ -14402,7 +14402,7 @@ var script = {
     },
     responsiveBaseElement: {
       type: String,
-      default: 'window'
+      default: "window"
     },
     video: {
       type: Boolean,
@@ -14426,7 +14426,7 @@ var script = {
     },
     fallbackEasing: {
       type: String,
-      default: 'swing'
+      default: "swing"
     },
     info: {
       type: Function,
@@ -14434,11 +14434,11 @@ var script = {
     },
     itemElement: {
       type: String,
-      default: 'div'
+      default: "div"
     },
     stageElement: {
       type: String,
-      default: 'div'
+      default: "div"
     },
     navContainer: {
       type: [String, Boolean],
@@ -14455,19 +14455,19 @@ var script = {
   },
   watch: {
     rtl(newValue, oldValue) {
-      this.owl.trigger('destroy.owl.carousel');
+      this.owl.trigger("destroy.owl.carousel");
       this.instantiate();
     },
 
     items(newValue, oldValue) {
-      this.owl.trigger('destroy.owl.carousel');
+      this.owl.trigger("destroy.owl.carousel");
       this.instantiate();
+    },
+
+    slideValue(newValue, oldValue) {
+      if (newValue < oldValue) this.goPrev();else this.goNext();
     }
 
-  },
-
-  slideValue(newValue, oldValue) {
-    if (newValue < oldValue) this.goPrev();else this.goNext();
   },
 
   data() {
@@ -14476,7 +14476,7 @@ var script = {
       showPrev: false,
       showNext: true,
       cachedCurrentPos: null,
-      elementHandle: 'carousel_' + this.generateUniqueId() // prevHandler: 'carousel_prev_' + this.generateUniqueId (),
+      elementHandle: "carousel_" + this.generateUniqueId() // prevHandler: 'carousel_prev_' + this.generateUniqueId (),
       // nextHandler: 'carousel_next_' + this.generateUniqueId(),
 
     };
@@ -14498,13 +14498,13 @@ var script = {
        *!  Notice that initialize.owl.carousel and initialized.owl.carousel
        *!  events must be attached before Owl Carousel initialization. This is required only for those two.
        **/
-      $('#' + this.elementHandle).on('initialize.owl.carousel', event => {
-        this.$emit('initialize', event);
+      $("#" + this.elementHandle).on("initialize.owl.carousel", event => {
+        this.$emit("initialize", event);
       });
-      $('#' + this.elementHandle).on('initialized.owl.carousel', event => {
-        this.$emit('initialized', event);
+      $("#" + this.elementHandle).on("initialized.owl.carousel", event => {
+        this.$emit("initialized", event);
       });
-      this.owl = $('#' + this.elementHandle).owlCarousel({
+      this.owl = $("#" + this.elementHandle).owlCarousel({
         // ! see if there are a cached postion.. if not use the passed prop:
         startPosition: this.cachedCurrentPos ? this.cachedCurrentPos : this.startPosition,
         items: this.items,
@@ -14558,8 +14558,8 @@ var script = {
         checkVisible: this.checkVisible
       }); // remove 'initialize','initialized' event listeners
 
-      $('#' + this.elementHandle).off('initialize.owl.carousel');
-      $('#' + this.elementHandle).off('initialized.owl.carousel');
+      $("#" + this.elementHandle).off("initialize.owl.carousel");
+      $("#" + this.elementHandle).off("initialized.owl.carousel");
     },
 
     generateUniqueId() {
@@ -14584,7 +14584,7 @@ var script = {
     // },
     handleNavBtnsVisiblityAndCacheIndex() {
       if (!this.loop) {
-        this.owl.on('changed.owl.carousel', event => {
+        this.owl.on("changed.owl.carousel", event => {
           this.cachedCurrentPos = event.item.index; // start
 
           if (event.item.index === 0) {
@@ -14606,11 +14606,11 @@ var script = {
     },
 
     goNext() {
-      this.owl.trigger('next.owl.carousel');
+      this.owl.trigger("next.owl.carousel");
     },
 
     goPrev() {
-      this.owl.trigger('prev.owl.carousel');
+      this.owl.trigger("prev.owl.carousel");
     }
 
   }
