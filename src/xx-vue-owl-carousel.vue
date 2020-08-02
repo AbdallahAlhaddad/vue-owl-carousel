@@ -6,14 +6,14 @@
   </div>
 </template>
 <script>
-import "./jquery-global";
-let $ = window.jQuery;
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import "owl.carousel";
+import './jquery-global'
+let $ = window.jQuery
+import 'owl.carousel/dist/assets/owl.carousel.css'
+import 'owl.carousel/dist/assets/owl.theme.default.css'
+import 'owl.carousel'
 
 export default {
-  name: "VOwlCarousel",
+  name: 'VOwlCarousel',
   props: {
     slideValue: {
       type: Number,
@@ -93,11 +93,11 @@ export default {
     },
     navText: {
       type: Array,
-      default: () => ["prev", "next"],
+      default: () => ['prev', 'next'],
     },
     navElement: {
       type: String,
-      default: "div",
+      default: 'div',
     },
     slideBy: {
       type: [Number, String],
@@ -105,7 +105,7 @@ export default {
     },
     slideTransition: {
       type: String,
-      default: "",
+      default: '',
     },
     dots: {
       type: Boolean,
@@ -173,7 +173,7 @@ export default {
     },
     responsiveBaseElement: {
       type: String,
-      default: "window",
+      default: 'window',
     },
     video: {
       type: Boolean,
@@ -197,7 +197,7 @@ export default {
     },
     fallbackEasing: {
       type: String,
-      default: "swing",
+      default: 'swing',
     },
     info: {
       type: Function,
@@ -205,11 +205,11 @@ export default {
     },
     itemElement: {
       type: String,
-      default: "div",
+      default: 'div',
     },
     stageElement: {
       type: String,
-      default: "div",
+      default: 'div',
     },
     navContainer: {
       type: [String, Boolean],
@@ -227,17 +227,17 @@ export default {
 
   watch: {
     rtl(newValue, oldValue) {
-      this.owl.trigger("destroy.owl.carousel");
-      this.instantiate();
-    },
-    slideValue(newValue, oldValue) {
-      if (newValue < oldValue) this.goPrev();
-      else this.goNext();
+      this.owl.trigger('destroy.owl.carousel')
+      this.instantiate()
     },
     items(newValue, oldValue) {
-      this.owl.trigger("destroy.owl.carousel");
-      this.instantiate();
+      this.owl.trigger('destroy.owl.carousel')
+      this.instantiate()
     },
+  },
+  slideValue(newValue, oldValue) {
+    if (newValue < oldValue) this.goPrev()
+    else this.goNext()
   },
 
   data() {
@@ -246,17 +246,17 @@ export default {
       showPrev: false,
       showNext: true,
       cachedCurrentPos: null,
-      prevHandler: "carousel_prev_" + this.generateUniqueId(),
-      elementHandle: "carousel_" + this.generateUniqueId(),
-      nextHandler: "carousel_next_" + this.generateUniqueId(),
-    };
+      elementHandle: 'carousel_' + this.generateUniqueId(),
+      // prevHandler: 'carousel_prev_' + this.generateUniqueId (),
+      // nextHandler: 'carousel_next_' + this.generateUniqueId(),
+    }
   },
 
-  mounted: function () {
-    this.instantiate();
-    this.bindEvents();
-    this.registerCustomNavBtns();
-    this.handleNavBtnsVisiblityAndCacheIndex();
+  mounted: function() {
+    this.instantiate()
+    this.bindEvents()
+    // this.registerCustomNavBtns()
+    this.handleNavBtnsVisiblityAndCacheIndex()
   },
 
   updated() {
@@ -269,18 +269,16 @@ export default {
        *!  Notice that initialize.owl.carousel and initialized.owl.carousel
        *!  events must be attached before Owl Carousel initialization. This is required only for those two.
        **/
-      $("#" + this.elementHandle).on("initialize.owl.carousel", (event) => {
-        this.$emit("initialize", event);
-      });
-      $("#" + this.elementHandle).on("initialized.owl.carousel", (event) => {
-        this.$emit("initialized", event);
-      });
+      $('#' + this.elementHandle).on('initialize.owl.carousel', (event) => {
+        this.$emit('initialize', event)
+      })
+      $('#' + this.elementHandle).on('initialized.owl.carousel', (event) => {
+        this.$emit('initialized', event)
+      })
 
-      this.owl = $("#" + this.elementHandle).owlCarousel({
+      this.owl = $('#' + this.elementHandle).owlCarousel({
         // ! see if there are a cached postion.. if not use the passed prop:
-        startPosition: this.cachedCurrentPos
-          ? this.cachedCurrentPos
-          : this.startPosition,
+        startPosition: this.cachedCurrentPos ? this.cachedCurrentPos : this.startPosition,
         items: this.items,
         margin: this.margin,
         loop: this.loop,
@@ -330,60 +328,62 @@ export default {
         navContainer: this.navContainer,
         dotsContainer: this.dotsContainer,
         checkVisible: this.checkVisible,
-      });
+      })
 
       // remove 'initialize','initialized' event listeners
-      $("#" + this.elementHandle).off("initialize.owl.carousel");
-      $("#" + this.elementHandle).off("initialized.owl.carousel");
+      $('#' + this.elementHandle).off('initialize.owl.carousel')
+      $('#' + this.elementHandle).off('initialized.owl.carousel')
     },
     generateUniqueId() {
-      return Math.random().toString(36).substring(2, 15);
+      return Math.random()
+        .toString(36)
+        .substring(2, 15)
     },
     bindEvents() {
       this.events.forEach((eventName) => {
         this.owl.on(`${eventName}.owl.carousel`, (event) => {
-          this.$emit(eventName, event);
+          this.$emit(eventName, event)
           // console.log(eventName)
-        });
-      });
+        })
+      })
     },
-    registerCustomNavBtns() {
-      $("#" + this.prevHandler).click(() => {
-        this.goPrev();
-      });
+    // registerCustomNavBtns() {
+    //   $('#' + this.prevHandler).click(() => {
+    //     this.goPrev()
+    //   })
 
-      $("#" + this.nextHandler).click(() => {
-        this.goNext();
-      });
-    },
+    //   $('#' + this.nextHandler).click(() => {
+    //     this.goNext()
+    //   })
+    // },
     handleNavBtnsVisiblityAndCacheIndex() {
       if (!this.loop) {
-        this.owl.on("changed.owl.carousel", (event) => {
-          this.cachedCurrentPos = event.item.index;
+        this.owl.on('changed.owl.carousel', (event) => {
+          this.cachedCurrentPos = event.item.index
           // start
           if (event.item.index === 0) {
-            this.showPrev = false;
-            this.showNext = true;
+            this.showPrev = false
+            this.showNext = true
           } else {
-            const currnetel = Math.floor(event.item.index + event.page.size);
+            const currnetel = Math.floor(event.item.index + event.page.size)
             // last
             if (currnetel === event.item.count) {
-              this.showPrev = true;
-              this.showNext = false;
+              this.showPrev = true
+              this.showNext = false
             } else {
-              this.showPrev = true;
-              this.showNext = true;
+              this.showPrev = true
+              this.showNext = true
             }
           }
-        });
+        })
       }
     },
     goNext() {
-      this.owl.trigger("next.owl.carousel");
+      this.owl.trigger('next.owl.carousel')
     },
     goPrev() {
-      this.owl.trigger("prev.owl.carousel");
+      this.owl.trigger('prev.owl.carousel')
     },
   },
-};
+}
 </script>

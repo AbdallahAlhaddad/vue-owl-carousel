@@ -14459,15 +14459,15 @@ var script = {
       this.instantiate();
     },
 
-    slideValue(newValue, oldValue) {
-      if (newValue < oldValue) this.goPrev();else this.goNext();
-    },
-
     items(newValue, oldValue) {
       this.owl.trigger('destroy.owl.carousel');
       this.instantiate();
     }
 
+  },
+
+  slideValue(newValue, oldValue) {
+    if (newValue < oldValue) this.goPrev();else this.goNext();
   },
 
   data() {
@@ -14476,9 +14476,9 @@ var script = {
       showPrev: false,
       showNext: true,
       cachedCurrentPos: null,
-      prevHandler: 'carousel_prev_' + this.generateUniqueId(),
-      elementHandle: 'carousel_' + this.generateUniqueId(),
-      nextHandler: 'carousel_next_' + this.generateUniqueId()
+      elementHandle: 'carousel_' + this.generateUniqueId() // prevHandler: 'carousel_prev_' + this.generateUniqueId (),
+      // nextHandler: 'carousel_next_' + this.generateUniqueId(),
+
     };
   },
 
@@ -14574,15 +14574,14 @@ var script = {
       });
     },
 
-    registerCustomNavBtns() {
-      $('#' + this.prevHandler).click(() => {
-        this.goPrev();
-      });
-      $('#' + this.nextHandler).click(() => {
-        this.goNext();
-      });
-    },
-
+    // registerCustomNavBtns() {
+    //   $('#' + this.prevHandler).click(() => {
+    //     this.goPrev()
+    //   })
+    //   $('#' + this.nextHandler).click(() => {
+    //     this.goNext()
+    //   })
+    // },
     handleNavBtnsVisiblityAndCacheIndex() {
       if (!this.loop) {
         this.owl.on('changed.owl.carousel', event => {

@@ -45,6 +45,33 @@ export default {
 </script>
 ```
 
+- removed passing `next` & `prev` as named slots. instead pass `slideValue` prop and create your custom buttons outside the carousel:
+
+```
+<template>
+    <carousel :slideValue="slideController">
+        //
+    </carousel>
+    <button @click="slideController++">next</button>
+    <button @click="slideController--">prev</button>
+
+<template/>
+<script>
+
+import carousel from 'xx-vue-owl-carousel'
+
+export default {
+    components: { carousel },
+    data(){
+        return{
+            slideController:0,
+        }
+    }
+}
+
+</script>
+```
+
 - changed `webpack` to `rollup`.
 
 ## Installation
@@ -77,20 +104,6 @@ Basic Usage
     <img src="https://placeimg.com/200/200/any?3">
 
     <img src="https://placeimg.com/200/200/any?4">
-
-</carousel>
-```
-
-Custom prev and next buttons using slot, the buttons will be hidden while start and end in non-loop mode
-
-```
-<carousel>
-
-    <template slot="prev"><span class="prev">prev</span></template>
-
-    //
-
-    <template slot="next"><span class="next">next</span></template>
 
 </carousel>
 ```

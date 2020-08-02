@@ -14450,13 +14450,13 @@ var script = {
       this.owl.trigger('destroy.owl.carousel');
       this.instantiate();
     },
-    slideValue: function slideValue(newValue, oldValue) {
-      if (newValue < oldValue) this.goPrev();else this.goNext();
-    },
     items: function items(newValue, oldValue) {
       this.owl.trigger('destroy.owl.carousel');
       this.instantiate();
     }
+  },
+  slideValue: function slideValue(newValue, oldValue) {
+    if (newValue < oldValue) this.goPrev();else this.goNext();
   },
   data: function data() {
     return {
@@ -14464,9 +14464,9 @@ var script = {
       showPrev: false,
       showNext: true,
       cachedCurrentPos: null,
-      prevHandler: 'carousel_prev_' + this.generateUniqueId(),
-      elementHandle: 'carousel_' + this.generateUniqueId(),
-      nextHandler: 'carousel_next_' + this.generateUniqueId()
+      elementHandle: 'carousel_' + this.generateUniqueId() // prevHandler: 'carousel_prev_' + this.generateUniqueId (),
+      // nextHandler: 'carousel_next_' + this.generateUniqueId(),
+
     };
   },
   mounted: function mounted() {
@@ -14561,35 +14561,33 @@ var script = {
         });
       });
     },
-    registerCustomNavBtns: function registerCustomNavBtns() {
-      var _this3 = this;
-
-      $('#' + this.prevHandler).click(function () {
-        _this3.goPrev();
-      });
-      $('#' + this.nextHandler).click(function () {
-        _this3.goNext();
-      });
-    },
+    // registerCustomNavBtns() {
+    //   $('#' + this.prevHandler).click(() => {
+    //     this.goPrev()
+    //   })
+    //   $('#' + this.nextHandler).click(() => {
+    //     this.goNext()
+    //   })
+    // },
     handleNavBtnsVisiblityAndCacheIndex: function handleNavBtnsVisiblityAndCacheIndex() {
-      var _this4 = this;
+      var _this3 = this;
 
       if (!this.loop) {
         this.owl.on('changed.owl.carousel', function (event) {
-          _this4.cachedCurrentPos = event.item.index; // start
+          _this3.cachedCurrentPos = event.item.index; // start
 
           if (event.item.index === 0) {
-            _this4.showPrev = false;
-            _this4.showNext = true;
+            _this3.showPrev = false;
+            _this3.showNext = true;
           } else {
             var currnetel = Math.floor(event.item.index + event.page.size); // last
 
             if (currnetel === event.item.count) {
-              _this4.showPrev = true;
-              _this4.showNext = false;
+              _this3.showPrev = true;
+              _this3.showNext = false;
             } else {
-              _this4.showPrev = true;
-              _this4.showNext = true;
+              _this3.showPrev = true;
+              _this3.showNext = true;
             }
           }
         });
@@ -14698,7 +14696,7 @@ var __vue_inject_styles__ = undefined;
 var __vue_scope_id__ = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-265739ea";
+var __vue_module_identifier__ = "data-v-252e69d5";
 /* functional template */
 
 var __vue_is_functional_template__ = false;
