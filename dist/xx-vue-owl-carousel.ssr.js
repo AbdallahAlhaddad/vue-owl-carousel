@@ -14292,6 +14292,10 @@ var script = {
       type: Boolean,
       default: false
     },
+    autoHeight: {
+      type: Boolean,
+      default: false
+    },
     startPosition: {
       type: Number,
       default: 0
@@ -14464,18 +14468,13 @@ var script = {
       showPrev: false,
       showNext: true,
       cachedCurrentPos: null,
-      elementHandle: "carousel_" + this.generateUniqueId() // prevHandler: 'carousel_prev_' + this.generateUniqueId (),
-      // nextHandler: 'carousel_next_' + this.generateUniqueId(),
-
+      elementHandle: "carousel_" + this.generateUniqueId()
     };
   },
   mounted: function mounted() {
     this.instantiate();
-    this.bindEvents(); // this.registerCustomNavBtns()
-
-    this.handleNavBtnsVisiblityAndCacheIndex();
-  },
-  updated: function updated() {// console.log('carousel was updated!')
+    this.bindEvents();
+    this.handleCachedIndex();
   },
   methods: {
     instantiate: function instantiate() {
@@ -14506,6 +14505,7 @@ var script = {
         merge: this.merge,
         mergeFit: this.mergeFit,
         autoWidth: this.autoWidth,
+        autoHeight: this.autoHeight,
         uRLhashListener: this.uRLhashListener,
         nav: this.nav,
         rewind: this.rewind,
@@ -14561,37 +14561,12 @@ var script = {
         });
       });
     },
-    // registerCustomNavBtns() {
-    //   $('#' + this.prevHandler).click(() => {
-    //     this.goPrev()
-    //   })
-    //   $('#' + this.nextHandler).click(() => {
-    //     this.goNext()
-    //   })
-    // },
-    handleNavBtnsVisiblityAndCacheIndex: function handleNavBtnsVisiblityAndCacheIndex() {
+    handleCachedIndex: function handleCachedIndex() {
       var _this3 = this;
 
-      if (!this.loop) {
-        this.owl.on("changed.owl.carousel", function (event) {
-          _this3.cachedCurrentPos = event.item.index; // start
-
-          if (event.item.index === 0) {
-            _this3.showPrev = false;
-            _this3.showNext = true;
-          } else {
-            var currnetel = Math.floor(event.item.index + event.page.size); // last
-
-            if (currnetel === event.item.count) {
-              _this3.showPrev = true;
-              _this3.showNext = false;
-            } else {
-              _this3.showPrev = true;
-              _this3.showNext = true;
-            }
-          }
-        });
-      }
+      this.owl.on("changed.owl.carousel", function (event) {
+        _this3.cachedCurrentPos = event.item.index;
+      });
     },
     goNext: function goNext() {
       this.owl.trigger("next.owl.carousel");
@@ -14696,7 +14671,7 @@ var __vue_inject_styles__ = undefined;
 var __vue_scope_id__ = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-7214428e";
+var __vue_module_identifier__ = "data-v-c1f61d78";
 /* functional template */
 
 var __vue_is_functional_template__ = false;

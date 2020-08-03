@@ -14304,6 +14304,10 @@ var script = {
       type: Boolean,
       default: false
     },
+    autoHeight: {
+      type: Boolean,
+      default: false
+    },
     startPosition: {
       type: Number,
       default: 0
@@ -14476,22 +14480,15 @@ var script = {
       showPrev: false,
       showNext: true,
       cachedCurrentPos: null,
-      elementHandle: "carousel_" + this.generateUniqueId() // prevHandler: 'carousel_prev_' + this.generateUniqueId (),
-      // nextHandler: 'carousel_next_' + this.generateUniqueId(),
-
+      elementHandle: "carousel_" + this.generateUniqueId()
     };
   },
 
   mounted: function () {
     this.instantiate();
-    this.bindEvents(); // this.registerCustomNavBtns()
-
-    this.handleNavBtnsVisiblityAndCacheIndex();
+    this.bindEvents();
+    this.handleCachedIndex();
   },
-
-  updated() {// console.log('carousel was updated!')
-  },
-
   methods: {
     instantiate() {
       /**
@@ -14519,6 +14516,7 @@ var script = {
         merge: this.merge,
         mergeFit: this.mergeFit,
         autoWidth: this.autoWidth,
+        autoHeight: this.autoHeight,
         uRLhashListener: this.uRLhashListener,
         nav: this.nav,
         rewind: this.rewind,
@@ -14574,35 +14572,10 @@ var script = {
       });
     },
 
-    // registerCustomNavBtns() {
-    //   $('#' + this.prevHandler).click(() => {
-    //     this.goPrev()
-    //   })
-    //   $('#' + this.nextHandler).click(() => {
-    //     this.goNext()
-    //   })
-    // },
-    handleNavBtnsVisiblityAndCacheIndex() {
-      if (!this.loop) {
-        this.owl.on("changed.owl.carousel", event => {
-          this.cachedCurrentPos = event.item.index; // start
-
-          if (event.item.index === 0) {
-            this.showPrev = false;
-            this.showNext = true;
-          } else {
-            const currnetel = Math.floor(event.item.index + event.page.size); // last
-
-            if (currnetel === event.item.count) {
-              this.showPrev = true;
-              this.showNext = false;
-            } else {
-              this.showPrev = true;
-              this.showNext = true;
-            }
-          }
-        });
-      }
+    handleCachedIndex() {
+      this.owl.on("changed.owl.carousel", event => {
+        this.cachedCurrentPos = event.item.index;
+      });
     },
 
     goNext() {

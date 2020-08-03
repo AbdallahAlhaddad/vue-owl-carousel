@@ -75,6 +75,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    autoHeight: {
+      type: Boolean,
+      default: false,
+    },
     startPosition: {
       type: Number,
       default: 0,
@@ -286,6 +290,7 @@ export default {
         merge: this.merge,
         mergeFit: this.mergeFit,
         autoWidth: this.autoWidth,
+        autoHeight: this.autoHeight,
         uRLhashListener: this.uRLhashListener,
         nav: this.nav,
         rewind: this.rewind,

@@ -14,62 +14,64 @@
 
 - Added `rtl` prop, can be changed dynamically (the carousel will be re-instantiated in rtl mode and on the same slide location)
 
+- Added `autoHeight` prop
+
 - Due to a bug in the responsive mode, i've added a temporarily fix by allowing `items` prop to be changed dynamically (like `rtl`), so you can determine the breakpoints and pass corresponding items from your main project.
 
 - Fixed `initialize` & `initialized` not being fired up.
 
 - Added a `events` prop that takes an array of the events you want to register instead of registering all library events.
 
-```
+```html
 <template>
-    <carousel :events="['initialized', 'changed']" @initialized="intial" @changed="changed">
+  <carousel :events="['initialized', 'changed']" @initialized="intial" @changed="changed">
     //
-    </carousel>
-<template/>
+  </carousel>
+  <template />
 
-<script>
-import carousel from 'xx-vue-owl-carousel'
-export default {
-    components: { carousel },
-    methods:{
+  <script>
+    import carousel from 'xx-vue-owl-carousel'
+    export default {
+      components: { carousel },
+      methods: {
         intial(event) {
-        console.log('owl carousel initialized')
-        console.log('number of slides:', event.item.count)
-        console.log('active slide index:', event.item.index)
+          console.log('owl carousel initialized')
+          console.log('number of slides:', event.item.count)
+          console.log('active slide index:', event.item.index)
         },
-        changed(event){
-        //
-        }
+        changed(event) {
+          //
+        },
+      },
     }
-}
-</script>
+  </script></template
+>
 ```
 
 - removed passing `next` & `prev` as named slots. instead pass `slideValue` prop and create your custom buttons outside the carousel:
 
-```
+```html
 <template>
-    <carousel :slideValue="slideController">
-        //
-    </carousel>
-    <button @click="slideController++">next</button>
-    <button @click="slideController--">prev</button>
+  <carousel :slideValue="slideController">
+    //
+  </carousel>
+  <button @click="slideController++">next</button>
+  <button @click="slideController--">prev</button>
 
-<template/>
-<script>
+  <template />
+  <script>
+    import carousel from 'xx-vue-owl-carousel'
 
-import carousel from 'xx-vue-owl-carousel'
-
-export default {
-    components: { carousel },
-    data(){
-        return{
-            slideController:0,
+    export default {
+      components: { carousel },
+      data() {
+        return {
+          slideController: 0,
         }
+      },
     }
-}
-
-</script>
+  </script></template
+>
 ```
 
 - changed `webpack` to `rollup`.
@@ -80,51 +82,43 @@ export default {
 
 ## Usage
 
-```
+```html
 <script>
+  import carousel from 'xx-vue-owl-carousel'
 
-import carousel from 'xx-vue-owl-carousel'
-
-export default {
+  export default {
     components: { carousel },
-}
-
+  }
 </script>
 ```
 
 Basic Usage
 
-```
+```html
 <carousel>
+  <img src="https://placeimg.com/200/200/any?1" />
 
-    <img src="https://placeimg.com/200/200/any?1">
+  <img src="https://placeimg.com/200/200/any?2" />
 
-    <img src="https://placeimg.com/200/200/any?2">
+  <img src="https://placeimg.com/200/200/any?3" />
 
-    <img src="https://placeimg.com/200/200/any?3">
-
-    <img src="https://placeimg.com/200/200/any?4">
-
+  <img src="https://placeimg.com/200/200/any?4" />
 </carousel>
 ```
 
 Set options,
 
-```
+```html
 <carousel :autoplay="true" :nav="false">
-
-//
-
+  //
 </carousel>
 ```
 
 Set events,
 
-```
+```html
 <carousel @changed="changed" @updated="updated">
-
-//
-
+  //
 </carousel>
 ```
 
