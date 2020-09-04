@@ -57,24 +57,43 @@
   </carousel>
   <button @click="slideController++">next</button>
   <button @click="slideController--">prev</button>
+</template>
 
-  <template />
-  <script>
-    import carousel from 'xx-vue-owl-carousel'
+<script>
+  import carousel from 'xx-vue-owl-carousel'
 
-    export default {
-      components: { carousel },
-      data() {
-        return {
-          slideController: 0,
-        }
-      },
-    }
-  </script></template
->
+  export default {
+    components: { carousel },
+    data() {
+      return {
+        slideController: 0,
+      }
+    },
+  }
+</script>
 ```
 
 - changed `webpack` to `rollup`.
+
+- (`v1.1.9`) Added a method to manually re-instantiate the carousel if needed:
+
+```html
+<template>
+  <carousel ref="carousel">
+    //
+  </carousel>
+</template>
+
+<script>
+  export default {
+    methods: {
+      refreshCarousel() {
+        this.$refs.carousel.refresh()
+      },
+    },
+  }
+</script>
+```
 
 ## Installation
 

@@ -1,6 +1,6 @@
 {
   "name": "xx-vue-owl-carousel",
-  "version": "1.1.5",
+  "version": "1.1.9",
   "description": "vue wrapper for owl carousel 2.",
   "main": "dist/xx-vue-owl-carousel.ssr.js",
   "browser": "dist/xx-vue-owl-carousel.esm.js",
@@ -21,25 +21,25 @@
     "owl.carousel": "^2.3.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
     "@rollup/plugin-alias": "^2.2.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-inject": "^4.0.2",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@rollup/plugin-replace": "^2.3.2",
-    "@vue/cli-plugin-babel": "^4.3.1",
-    "@vue/cli-service": "^4.3.1",
+    "@vue/cli-plugin-babel": "^4.5.4",
+    "@vue/cli-service": "^4.5.4",
     "cross-env": "^7.0.2",
     "minimist": "^1.2.5",
-    "rollup": "^2.7.3",
+    "rollup": "^2.26.10",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-external-globals": "^0.5.0",
-    "rollup-plugin-postcss": "^3.1.3",
-    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-terser": "^7.0.1",
     "rollup-plugin-vue": "^5.1.6",
-    "vue": "^2.6.11",
-    "vue-template-compiler": "^2.6.11"
+    "vue": "^2.6.12",
+    "vue-template-compiler": "^2.6.12"
   },
   "peerDependencies": {
     "vue": "^2.6.11"
